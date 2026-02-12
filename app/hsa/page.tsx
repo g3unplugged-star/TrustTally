@@ -228,4 +228,100 @@ export default function HSACalculator() {
               </p>
               <div className="flex items-center gap-2 mt-3">
                 <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-medium">
-                  💰 Tax savings: {format
+                  💰 Tax savings: {formatUSD(result.taxSavings)}
+                </span>
+              </div>
+            </div>
+
+            {/* Triple Tax Advantage */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <Award className="h-5 w-5 text-emerald-600" />
+                Triple tax advantage
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs font-bold text-green-700">1</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Tax-deductible contributions</p>
+                    <p className="text-xs text-gray-600">Save {formatUSD(result.taxSavings)} on taxes now</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs font-bold text-green-700">2</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Tax-free growth</p>
+                    <p className="text-xs text-gray-600">No capital gains tax on investments</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs font-bold text-green-700">3</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Tax-free withdrawals</p>
+                    <p className="text-xs text-gray-600">For qualified medical expenses (past or future)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Comparison */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-semibold text-gray-900 mb-4">HSA vs 401k</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Your HSA value</span>
+                  <span className="font-bold text-emerald-600">{formatUSD(result.hsaBalance)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Equivalent 401k value (pre-tax)</span>
+                  <span className="font-bold text-gray-900">{formatUSD(result.equivalent401k)}</span>
+                </div>
+                <div className="flex justify-between pt-3 border-t">
+                  <span className="font-medium text-gray-900">Total economic value</span>
+                  <span className="font-bold text-emerald-600">{formatUSD(result.totalValue)}</span>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-4">
+                HSA is the only account with triple tax advantage. It's strictly better than 401k for medical expenses.
+              </p>
+            </div>
+
+            {/* Related Tools */}
+            <RelatedTools 
+              current="hsa"
+              tools={[
+                { name: '401k & Retirement', href: '/retirement', description: 'Employer match calculator' },
+                { name: 'Roth IRA', href: '/roth-ira', description: 'Tax-free growth comparison' },
+                { name: 'Compound Interest', href: '/compound', description: 'Visualize growth' }
+              ]}
+            />
+          </div>
+        )}
+
+        {/* FAQ */}
+        <FAQ 
+          items={[
+            {
+              question: 'What is an HSA and who qualifies?',
+              answer: 'A Health Savings Account (HSA) is available to anyone with a High-Deductible Health Plan (HDHP). For 2026, minimum deductible is $1,600 individual / $3,200 family.'
+            },
+            {
+              question: 'Is HSA really better than 401k?',
+              answer: 'For medical expenses, yes. HSA offers triple tax advantage: pre-tax contributions, tax-free growth, and tax-free withdrawals for qualified medical expenses. No other account does this.'
+            },
+            {
+              question: 'Can I use HSA for non-medical expenses?',
+              answer: 'After age 65, you can withdraw for any purpose without penalty, but pay income tax (like a 401k). For medical expenses, withdrawals remain completely tax-free.'
+            }
+          ]}
+        />
+      </div>
+    </div>
+  );
+}
