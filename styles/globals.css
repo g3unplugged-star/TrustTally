@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MOBILE-FIRST CRITICAL */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1e24;
+}
+
+/* 48px touch targets - Apple HIG */
+button, 
+a, 
+input[type="button"], 
+input[type="submit"],
+input[type="range"],
+.clickable {
+  touch-action: manipulation;
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Kill spinners on number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Prevent iOS zoom on focus */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 16px !important;
+}
+
+/* Thumb-optimized sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border: 2px solid #2563eb;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+  background: #f3f4f6;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  background: white;
+  border: 2px solid #2563eb;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+/* Better focus states */
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Bottom sheet for results on mobile */
+@media (max-width: 640px) {
+  .results-sheet {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    z-index: 10;
+  }
+}
